@@ -37,27 +37,31 @@ System.out.println("a > 9");
    * or divisible by 400, then, it is a leap year.
    */
   int year1 = 2009;
+  boolean year1isleapyear = year1%4 == 0 && year1%100 != 0 || year1%400==0;
   // Program a condition to check if it is a leap year.
-  // But should NOT print anything.
-  if(year1%4 == 0 && year1%100 != 0 || year1%400==0);
+  // But should NOT print anything.]
+  if(year1isleapyear);
   {
   }
   int year2 = 2020;
-  if(year2%4 == 0 && year2%100 != 0 || year2%400==0);
+  boolean year2isleapyear = year2%4 == 0 && year2%100 != 0 || year2%400==0;
+  if(year2isleapyear);
   // same as the above, but it will print out.
   {
     System.out.println("2020 is a leap year.");
   }
   int year3 = 2400;
-  if(year3%4 == 0 && year3%100 != 0 || year3%400==0);
+  boolean year3isleapyear = year2%4 == 0 && year2%100 != 0 || year2%400==0;
+  if(year3isleapyear);
   // same as the above, but it will print out.
   {
     System.out.println("2400 is a leap year.");
   }
 
   int year5 = 2100;
-  if(year5%4 == 0 && year5%100 != 0 || year5%400==0);{
-    
+  boolean year5isleapyear = year2%4 == 0 && year2%100 != 0 || year2%400==0;
+  if(year5isleapyear);{
+
   }
   // same as the above, but it will NOT print out.
  
