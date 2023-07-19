@@ -24,6 +24,9 @@ public class JavaQuest10 {
     int[] backup = {25, 14, 56, 15, 36, 56, 77, 18, 29, 49};
     int[] temp = new int [] {my_array.length};
 
+  //方向1 -> 應該要backup左成組數字, 拍左新個index Position同newValue
+  //再將後面既數字轉做backup果組數字
+
     Scanner input = new Scanner(System.in);
 
     System.out.print("Input an index for inserting the value: ");
@@ -35,6 +38,7 @@ public class JavaQuest10 {
     System.out.println("Original Array : " + Arrays.toString(my_array));
 
     //my_array[i] = newValue <-我會固定左new value全部係120
+
 
 
 for(int i = 0; i < my_array.length-1; i++){
