@@ -61,7 +61,7 @@ public class JavaQuest22 {
         }
       }
 
-      for (i = 0; i < str.length(); i++) {
+      for (i = 0; i < arr.length; i++) {
         sd = sd + arr[i];
       }
     }
