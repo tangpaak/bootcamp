@@ -5,8 +5,7 @@ public class JavaQuest8 {
   // Write a loop to find the second max number.
   public static void main(String[] args) {
     // code here
-
-
+    
     int[] nums = new int[] {-10, 5, 100, 240, 230, 80}; // Second Max = 230
     int max = nums[0];
     int secondMax = nums[0];

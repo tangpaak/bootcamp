@@ -19,29 +19,6 @@ public class JavaQuest21 {
 
   }
 
-  // public static boolean isThreeDivisors(int n) {
-  //   // finish the code
-  //   if(n == 1){
-  //     return false;
-  //   }
-
-  // for (int i = 2; i < n; i++) {
-  //     if (n % i == 0 && Math.pow(i, i) == n && n % n == 0) {
-  //         return true;
-  //     }
-  // }
-  // return false;
-
-  //   double a = Math.round(Math.sqrt(n));
-  //   boolean num = (n % n == 0 && n % 1 == 0 && n % a == 0 && n !=1);
-
-  //   if (num) {
-  //         return true;
-  //       }
-
-  //     return false;
-  // }
-
     public static boolean isThreeDivisors(int n) {
       int count = 0;
       for (int i = 1; i <= n; i++) {

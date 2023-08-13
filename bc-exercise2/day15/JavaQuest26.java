@@ -28,9 +28,8 @@ public class JavaQuest26 {
     // code here
     int sum = 0;
  
-
     for (int i = 0; i < nums.length; i++) {
-      int count = 0; //reset count
+      int count = 0; //when run to next nums [i] reset count
       // System.out.println("count reset ="+ count + "\n");
       for (int j = 0; j < nums.length; j++) {
         if (nums[j] == nums[i]) {

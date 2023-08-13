@@ -20,6 +20,7 @@ public class JavaQuest4 {
     // 1. Even numbers
     // 2. Divisible by 3
     // 3. > 0
+    
     //1.雙數 2.大過0 3.比3除盡 4.Print 10個數字
 int count = 0;
 

@@ -29,21 +29,21 @@ public class JavaQuest28 {
   // 搵arr[i]有無出現過係word, 有就count++
   // result個count
   // 要拆開d字去計?
-  // use contains?
+  // use contains???
 
   public static int StringsNumber(String[] patterns, String word) {
     // code here
     // pattern {"a", "abc", "bc", "d"}, target word "abc"
+    // output : 3
 
     int count = 0;
     for (int i = 0; i < patterns.length; i++) {
-if (word.contains(patterns[i]) && patterns[i] !=""){
-      count++;
-      // System.out.println("patterns[i]= " + patterns[i]);
-      // System.out.println("count = " + count);
-}
+      if (word.contains(patterns[i]) && patterns[i] != "") {
+        count++;
+        // System.out.println("patterns[i]= " + patterns[i]);
+        // System.out.println("count = " + count);
+      }
     }
-
     return count;
   }
 
