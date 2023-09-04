@@ -1,0 +1,14 @@
+Generics:
+一條範圍去理解 -> T
+
+1. T extends Number ( Number or  Number或以下既class)
+
+2. T super Number ( Number or Number或以上既class)
+
+3. <? extends Number> <- 留意呢個基本唔會寫到, 因為個定義過闊, 係入面定義會過唔到入口位
+
+4. <? super Number>  <- 呢個反而無問題, 因為Number係最細, 通常寫上面既野啪入去係放到既
+
+5. T, S, U, V (咁樣寫通常意味緊係decrible 唔同既data type: String, Integer, Long等...)
+
+6. 

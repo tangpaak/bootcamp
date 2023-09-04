@@ -1,0 +1,29 @@
+Thread
+1.無限loop既野
+2.但佢會end既
+
+
+Thread就係Java入面既最細單位
+如果果個program無一粒grammer check既掣, 意思姐係果個program係無限loop緊運行check野
+所以需要一支check去分離, check個grammer
+
+點解chrome用咁多ram
+因為佢複雜咁function, 多線程既software, 所以要用好多ram去行
+
+compile program就會一路行loop
+ 
+Server就係其中一個例子去係咁loop去run野
+
+Thread1, Thread2, Thread3 <- 咁樣就係分唔同開始位置去做
+
+
+1. Thread AB example (Same Speed)
+    Thread A 17 + 1 =18 同時間
+    Thread B 17 +1 = 18
+    但我想outcome A行一次 B又行一次 姐係結果要19 , 要點做?
+    可以用開關門既index = 1, 轉index -1去行
+
+2. 正常情況下唔好set你個JAVA用Mutli thread去做
+
+3. 用Synchronsize method去做到分流thread處理大量既數據
+

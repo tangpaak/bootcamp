@@ -1,0 +1,75 @@
+
+1. DataBase	
+
+i. HDD is database
+ii. HardCode is not database
+
+2. Client
+你可以當vs code係一個client
+
+
+3. Application server:
+i. 有佢地自己complie果d sourse -> 可以當做.class果d file
+ii. 同一部機入面做哂server同埋client
+iii. 一個class file可以run好多次
+iv. complie係自己部機入面發生
+v. 但run time就係application server上面運算
+vi. 好難用window機去做Application server, 因為真係好慢
+vii. 所以server一定係linux機或者unix機
+
+
+4. 點解要分離呢?
+i. 風險, 數據隨時要切離
+ii. 多transaction黎
+
+5.首要係將application 同 server分離, 個cost亦都唔會好大差別
+
+6. 個design唔好果時有機會要redo
+
+7. 3306可以係同mysql連埋
+
+8. set sex = CASE <-- 類似係Switch咁既寫法
+
+update salary 
+set sex = CASE
+WHEN sex = 'f' THEN 'm'
+ELSE 'f'
+END
+
+where sex in ('f', 'm');
+
+9.  Primary Key (ID) 係令到佢可以自己Run既 (Like 1, 2, 3)
+A primary key is a column or a set of columns in a table that uniquely identifies each row or record in that table.
+
+10. -- Foreign Key (Nationality) 
+定義: 一個table reference to 另一個table
+For example: 另一個table既Primary Key (like US, UK, JP)
+好處: 
+
+10. self-balancing search tree (B+ tree)
+
+11. Transaction - all or nothing
+一係就一次過發生哂 一係就無野發生
+好似轉數 -> 由account A出 1000, 去account B入1000
+
+12. DBMS - DATA BASE Management System
+
+13. Update Anomaly - Problem1
+開多個Table去儲Skill就解決到
+
+14. Inertion Anomaly
+15. Delete Anomaly 
+
+16. Super Key （唔會重覆既數據)
+For example: Customers' First Name, Last Name, Date fof Birth, Gender 
+
+17. Candidate Key  (HKID, Passport, Email Address)
+Potential既primary key
+
+
+
+
+
+
+
+

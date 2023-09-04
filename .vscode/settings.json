@@ -1,0 +1,59 @@
+{
+	"folders": [
+		{
+			"path": "../github/bootcamp/bc-exercise2"
+		},
+		{
+			"path": "../github/bootcamp/demo-junit"
+		},
+		{
+			"path": "../github/bootcamp/demo-junit2"
+		}
+		// {
+		// 	"path": "../github/bootcamp/demo-method"
+		// },
+		// {
+		// 	"path": "../github/bootcamp/demo-operator"
+		// }
+	],
+	"settings": {},
+	"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m -Xlog:disable",
+	"java.project.sourcePaths": [
+		"test/test1/src",
+		"leetcode/leetcodefile/src",
+		"leetcode/leetcodeV/leetcodeV/src",
+		"bc-exercise2/day30",
+		"bc-exercise2/day29",
+		"bc-exercise2/day28",
+		"bc-exercise2/day27",
+		"Review/Week8",
+		"Review/Usefulcode/Stream1",
+		"DemoGeneral/demoarray/src/thread1",
+		"DemoGeneral/demoarray/src/optional1",
+		"DemoGeneral/demoarray/src/generics1",
+		"DemoGeneral/demoarray/src/exception1/ZRevision",
+		"DemoGeneral/demoarray/src/Pattern/FactoryPattern1",
+		"DemoGeneral/demoarray/src/NestedClass1/Anonymous",
+		"demo-lombok/src/main"
+	],
+	"java.configuration.updateBuildConfiguration": "interactive"
+	// "java.project.sourcePaths": [
+	// 	"leetcode/leetcodefile/src",
+	// 	"bc-exercise2/day9",
+	// 	"bc-exercise2/day8",
+	// 	"bc-exercise2/day7",
+	// 	"bc-exercise2/day6",
+	// 	"bc-exercise2/day5",
+	// 	"bc-exercise2/day4",
+	// 	"bc-exercise2/day3",
+	// 	"bc-exercise2/day2",
+	// 	"bc-exercise2/day16",
+	// 	"bc-exercise2/day15",
+	// 	"bc-exercise2/day14",
+	// 	"bc-exercise2/day13",
+	// 	"bc-exercise2/day12",
+	// 	"bc-exercise2/day11",
+	// 	"bc-exercise2/day10",
+	// 	"demo-Array/demoarray/src"
+	// ]
+}

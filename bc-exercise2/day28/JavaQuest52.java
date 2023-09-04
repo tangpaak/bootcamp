@@ -28,7 +28,7 @@ public class JavaQuest52 {
 
   public static boolean isPowerOfFour(int n) {
 
-    // Approach 1:
+    // // Approach 1:
     // if (n <= 0) {
     // return false;
     // }
@@ -41,14 +41,14 @@ public class JavaQuest52 {
     // // Check if the exponent is even
     // int exponent = 0;
     // while (n > 1) {
-    // n >>= 1;
+    // n >>= 1; // 1011 -> 101
     // exponent++;
 
     // }
 
     // return exponent % 2 == 0;
 
-    // Approach 2:
+  //   // Approach 2:
     if (n == 1) {
       return true;
     } else if (n % 4 == 0) {
