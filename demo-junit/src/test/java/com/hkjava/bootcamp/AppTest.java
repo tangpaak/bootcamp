@@ -6,27 +6,33 @@ import org.junit.jupiter.api.TestInstance;
 
 // @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
+// call method既時候既方式已經同你約定左
 
 public class AppTest {
 
-  @Test
-  void testAssertEqual() {
-    assertEquals(8, App.add(2, 6));
-    assertEquals(3, App.add(2, 1));
-    assertEquals(1, App.add(2, 5));
-  }
+  private int x;
+
+  // @Test
+  // void testAssertEqual() {
+  //   assertEquals(8, App.add(2, 6));
+  //   assertEquals(3, App.add(2, 1));
+  //   assertEquals(1, App.add(2, 5));
+  //   assertEquals(-8, App.add(-6, -2));
+  //   x++;
+  //   assertEquals(1, x);
+  // }
 
   @Test
-  void testAssertNoEqual() {
+  void testAssertNotEqual() {
     assertNotEquals(4, App.add(1, 2));
   }
 
 
-  @Test
-  void testAddMethod() {
-    assertEquals(8, App.add(2, 6));
+  // @Test
+  // void testAddMethod() {
+  //   assertEquals(8, App.add(2, 6));
 
-  }
+  // }
 
   @Test
   void testAddMethod1() {
@@ -40,12 +46,35 @@ public class AppTest {
 
   }
 
+
+  // @Test
+  // void testAssertTrue() {
+  //   assertTrue(12 == App.add(7, 5));
+  // }
+
+  // @Test
+  // void testAssertFalse() {
+  //   assertFalse(2 == App.add(7, 5));
+  // }
+
+  @Test
+  void testAssertNull() {
+    String str = null;
+    assertNull(str);
+  }
+
+  @Test
+  void testAssertNotNull() {
+    Student student = new Student();
+    assertNotNull(student.getSubjects());
+  }
+
   public static void main(String[] args) {
 
-    AppTest t1 = new AppTest();
-    t1.testAssertEqual();
-    AppTest t2 = new AppTest();
-    t2.testAssertEqual();
+    // AppTest t1 = new AppTest();
+    // t1.testAssertEqual();
+    // AppTest t2 = new AppTest();
+    // t2.testAssertNotEqual();
 
 
 
