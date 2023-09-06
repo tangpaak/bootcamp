@@ -1,0 +1,379 @@
+Show databases;
+use SQL_EXERCISE;
+SHOW TABLES;
+
+select * from regions;
+select * from countries;
+select * from locations;
+select * from departments;
+select * from job_history;
+select * from employees;
+select * from jobs;
+select * from job_grades;
+
+-- i.
+CREATE TABLE regions(
+REGION_ID INTEGER AUTO_INCREMENT,
+REGION_NAME VARCHAR (25) NOT NULL,
+
+PRIMARY KEY (REGION_ID)
+
+);
+-- 
+CREATE TABLE countries (
+    COUNTRY_ID CHAR(2),
+    COUNTRY_NAME VARCHAR(40) NOT NULL,
+    REGION_ID INTEGER NOT NULL,
+    PRIMARY KEY (COUNTRY_ID),
+    FOREIGN KEY(REGION_ID) REFERENCES REGIONS(REGION_ID)
+);
+SELECT * FROM COUNTRIES;
+-- 
+CREATE TABLE locations (
+    LOCATION_ID INTEGER AUTO_INCREMENT,
+    STREET_ADDRESS VARCHAR(25) NOT NULL,
+    POSTAL_CODE VARCHAR(12) NOT NULL,
+    CITY VARCHAR(30) NOT NULL,
+    STATE_PROVINCE VARCHAR(12) NOT NULL,
+    COUNTRY_ID CHAR(2) NOT NULL,
+    PRIMARY KEY (LOCATION_ID),
+    FOREIGN KEY (COUNTRY_ID) REFERENCES COUNTRIES (COUNTRY_ID)
+);
+-- 
+CREATE TABLE DEPARTMENTS(
+DEPARTMENT_ID INTEGER AUTO_INCREMENT,
+DEPARTMENT_NAME VARCHAR(30) NOT NULL,
+MANAGER_ID INTEGER NOT NULL,
+LOCATION_ID INTEGER NOT NULL,
+
+PRIMARY KEY (DEPARTMENT_ID),
+FOREIGN KEY (LOCATION_ID) REFERENCES LOCATIONS(LOCATION_ID)
+);
+
+CREATE TABLE JOB_HISTORY(
+EMPLOYEE_ID INTEGER AUTO_INCREMENT,
+START_DATE DATE NOT NULL,
+END_DATE DATE NOT NULL,
+JOB_ID VARCHAR(10) NOT NULL,
+DEPARTMENT_ID INTEGER NOT NULL,
+PRIMARY KEY (EMPLOYEE_ID, START_DATE),
+FOREIGN KEY(DEPARTMENT_ID) REFERENCES DEPARTMENTS(DEPARTMENT_ID),
+FOREIGN KEY(JOB_ID) REFERENCES JOBS(JOB_ID)
+);
+
+CREATE TABLE EMPLOYEES(
+EMPLOYEE_ID INTEGER AUTO_INCREMENT,
+FIRST_NAME VARCHAR(20) NOT NULL,
+LAST_NAME VARCHAR(25) NOT NULL,
+EMAIL VARCHAR(25) NOT NULL,
+PHONE_NUMBER VARCHAR(20) NOT NULL,
+HIRE_DATE DATE NOT NULL,
+JOB_ID VARCHAR(10) NOT NULL,
+SALARY INTEGER NOT NULL,
+COMMISSION_PCT INTEGER NOT NULL,
+MANAGER_ID INTEGER NOT NULL,
+DEPARTMENT_ID INTEGER NOT NULL,
+
+PRIMARY KEY(EMPLOYEE_ID),
+
+FOREIGN KEY(DEPARTMENT_ID) REFERENCES DEPARTMENTS(DEPARTMENT_ID),
+FOREIGN KEY(EMPLOYEE_ID) REFERENCES JOB_HISTORY(EMPLOYEE_ID),
+FOREIGN KEY(JOB_ID) REFERENCES JOBS(JOB_ID)
+);
+
+CREATE TABLE JOBS(
+JOB_ID VARCHAR(10),
+JOB_TITLE VARCHAR(35) NOT NULL,
+MIN_SALARY INTEGER NOT NULL,
+MAX_SALARY INTEGER NOT NULL,
+
+PRIMARY KEY (JOB_ID)
+);
+
+
+ALTER TABLE JOBS 
+DROP COLUMN MIN_SALARY,
+drop COLUMN MAX_SALARY
+;
+SELECT * FROM JOBS;
+
+ALTER TABLE JOBS
+ADD COLUMN GRADE_LEVEL VARCHAR(2);
+
+ALTER TABLE JOBS
+ADD FOREIGN KEY (GRADE_LEVEL) REFERENCES JOB_GRADES(GRADE_LEVEL);
+
+
+
+
+
+-- ii. INSERT DATA
+
+-- Insert data
+-- REGIONS
+
+INSERT INTO regions (REGION_ID, REGION_NAME)
+VALUES
+(1, 'North America'),
+(2, 'Europe'),
+(3, 'Asia'),
+(4, 'South America'),
+(5, 'Africa');
+select * from regions;
+
+-- Countries
+INSERT INTO countries (COUNTRY_ID, COUNTRY_NAME, REGION_ID)
+VALUES
+('US', 'United States', 1),
+('CA', 'Canada', 1),
+('MX', 'Mexico', 1),
+
+('GB', 'United Kingdom', 2),
+('FR', 'France', 2),
+('DE', 'Germany', 2),
+
+('CN', 'China', 3),
+('JP', 'Japan', 3),
+('IN', 'India', 3),
+
+('BR', 'Brazil', 4),
+('AR', 'Argentina', 4),
+('CO', 'Colombia', 4),
+
+('ZA', 'South Africa', 5),
+('NG', 'Nigeria', 5),
+('KE', 'Kenya', 5);
+
+SELECT * from countries; 
+
+-- location
+INSERT INTO locations (LOCATION_ID, STREET_ADDRESS, POSTAL_CODE, CITY, STATE_PROVINCE, COUNTRY_ID)
+VALUES
+(1001, '123 Main Street', '12345', 'New York', 'NY', 'US'),
+(1002, '456 Elm Avenue', '67890', 'Los Angeles', 'CA', 'US'),
+(1003, '789 Oak Street', '54321', 'San Francisco', 'CA', 'US'),
+(1004, '555 Maple Road', 'M5V 2T6', 'Toronto', 'ON', 'CA');
+
+INSERT INTO locations (LOCATION_ID, STREET_ADDRESS, POSTAL_CODE, CITY, STATE_PROVINCE, COUNTRY_ID)
+VALUES
+(1005, '123 Sakura Avenue', '56789', 'Tokyo', 'Tokyo', 'JP');
+
+ Select * from locations;
+
+-- departments
+INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)
+VALUES
+(10, 'Finance', 100, 1001),
+(20, 'HR', 101, 1002),
+(30, 'Sales', 102, 1003),
+(40, 'Marketing', 103, 1004),
+(50, 'Research', 105, 1001),
+(60, 'Engineering', 106, 1002),
+(70, 'Operations', 107, 1003),
+(90, 'Quality Assurance', 108, 1004);
+
+INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)
+VALUES
+(100, 'Research and Development', 110, 1005);
+
+select * from departments;
+
+-- job history
+INSERT INTO job_history (EMPLOYEE_ID, START_DATE, END_DATE, JOB_ID, DEPARTMENT_ID)
+VALUES
+(1001, '2022-01-01', '2023-06-30', 'SA_MAN', 30),
+(1002, '2021-05-01', '2023-08-31', 'SA_REP', 30),
+(1003, '2020-03-15', '2023-08-31', 'ST_CLERK', 20),
+(1004, '2019-10-01', '2023-06-30', 'IT_PROG', 60),
+(1005, '2022-02-15', '2023-08-31', 'AD_ASST', 40),
+(1006, '2022-07-01', '2023-08-31', 'HR_REP', 20);
+
+INSERT INTO job_history (EMPLOYEE_ID, START_DATE, END_DATE, JOB_ID, DEPARTMENT_ID)
+VALUES
+(1007, '2023-01-01', '2023-08-31', 'IT_PROG', 100);
+
+
+select * from job_history;
+
+-- jobs
+
+INSERT INTO jobs (JOB_ID, JOB_TITLE, MIN_SALARY, MAX_SALARY)
+VALUES
+('SA_MAN', 'Sales Manager', 10000, 20000),
+('SA_REP', 'Sales Representative', 6000, 12000),
+('ST_CLERK', 'Stock Clerk', 2000, 5000),
+('IT_PROG', 'IT Programmer', 8000, 15000),
+('AD_ASST', 'Administration Assistant', 3000, 6000),
+('HR_REP', 'HR Representative', 4000, 9000),
+('JP_IT', 'IT Specialist', 7000, 12000);
+
+
+select * from jobs;
+
+-- employees
+INSERT INTO employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID, SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID)
+VALUES
+(1001, 'John', 'Doe', 'jodoe@example.com', '123-456-7890', '2022-01-01', 'SA_MAN', 15000, 0.1, 1001, 30),
+(1002, 'Jane', 'Smith', 'js@example.com', '987-654-3210', '2021-05-01', 'SA_REP', 8000, 0.05, 1001, 30),
+(1003, 'Michael', 'Johnson', 'm.j@example.com', '555-123-4567', '2020-03-15', 'ST_CLERK', 3000, 0.02, 1002, 20),
+(1004, 'Emily', 'Williams', 'emily@example.com', '456-789-0123', '2019-10-01', 'IT_PROG', 10000, 0.03, 1001, 60),
+(1005, 'David', 'Brown', 'david@example.com', '789-012-3456', '2022-02-15', 'AD_ASST', 4000, 0.02, 1003, 40);
+
+INSERT INTO employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID, SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID)
+VALUES
+(1007, 'Alex', 'Smith', 'alex.smith@example.com', '555-789-1234', '2023-01-01', 'IT_PROG', 9000, 3, 1007, 100);
+
+select * from employees;
+
+-- Query 
+-- iii.
+SELECT l.LOCATION_ID, l.STREET_ADDRESS, l.CITY, l.STATE_PROVINCE, c.COUNTRY_NAME
+FROM locations l
+JOIN countries c ON l.COUNTRY_ID = c.COUNTRY_ID;
+
+-- iv. 
+select first_name, last_name, department_ID
+from 
+employees;
+
+-- v.
+SELECT e.FIRST_NAME, e.LAST_NAME, e.JOB_ID, e.DEPARTMENT_ID
+FROM employees e
+JOIN departments d ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+JOIN locations l ON d.LOCATION_ID = l.LOCATION_ID
+JOIN countries c ON l.COUNTRY_ID = c.COUNTRY_ID
+WHERE c.COUNTRY_ID = 'JP';
+
+-- vi.
+SELECT employee_id, last_name, manager_id, last_name
+FROM employees e
+;
+
+
+-- vii.
+-- Insert into regions
+INSERT INTO regions (REGION_ID, REGION_NAME)
+VALUES (6, 'Oceania');
+
+-- Insert into countries
+INSERT INTO countries (COUNTRY_ID, COUNTRY_NAME, REGION_ID)
+VALUES ('AU', 'Australia', 6);
+
+-- Insert into locations
+INSERT INTO locations (LOCATION_ID, STREET_ADDRESS, POSTAL_CODE, CITY, STATE_PROVINCE, COUNTRY_ID)
+VALUES (1006, '789 Beach Blvd', '67890', 'Sydney', 'NSW', 'AU');
+
+-- Insert into departments
+INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)
+VALUES (110, 'Research and Development', 1007, 1006);
+
+-- Insert into jobs
+INSERT INTO jobs (JOB_ID, JOB_TITLE, MIN_SALARY, MAX_SALARY)
+VALUES ('RD_MAN', 'Research Manager', 10000, 18000);
+
+-- Insert into employees
+INSERT INTO employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID, SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID)
+VALUES (1008, 'Lex', 'De Haan', 'lex.dehaan@example.com', '555-123-4567', '2023-01-15', 'RD_MAN', 15000, 0, 1004, 110);
+
+UPDATE employees
+SET HIRE_DATE = '2022-01-01'
+WHERE EMPLOYEE_ID = 1008;
+
+
+-- Insert into job_history
+INSERT INTO job_history (EMPLOYEE_ID, START_DATE, END_DATE, JOB_ID, DEPARTMENT_ID)
+VALUES (1008, '2023-01-15', '2023-08-31', 'RD_MAN', 110);
+
+SELECT FIRST_NAME, LAST_NAME, HIRE_DATE
+FROM EMPLOYEES
+WHERE HIRE_DATE > 
+(SELECT HIRE_DATE FROM EMPLOYEES WHERE LAST_NAME = 'De Haan' AND FIRST_NAME = 'Lex')
+;
+
+Select * from employees;
+
+-- viii
+
+select * from employees;
+select 
+D.department_name,
+count(E.employee_ID) as number_of_employees
+FROM departments D 
+LEFT JOIN employees E ON E.department_IDCOURSE = D.department_ID
+group by department_name
+;
+
+-- ix (query to show all jobs in department 30)
+SELECT E.EMPLOYEE_ID,
+       J.JOB_TITLE,
+--        start_date,
+--        end_date,
+       DATEDIFF(end_date, start_date) AS number_of_days
+FROM EMPLOYEES E
+LEFT JOIN JOBS J ON E.JOB_ID = J.JOB_ID
+LEFT JOIN JOB_HISTORY JH ON E.EMPLOYEE_ID = JH.EMPLOYEE_ID
+WHERE E.DEPARTMENT_ID = 30
+;
+
+-- x (all department name, manager name, city and country name)
+select * from employees;
+
+select * 
+from departments D
+LEFT JOIN employees E on D.department_ID = E.department_ID
+LEFT JOIN locations L on D.location_ID = L.location_ID
+LEFT JOIN countries C on L.country_ID = C.country_ID
+;
+
+-- select * 
+-- from departments D 
+-- left join employees E on D.department_ID = E.department_ID;
+
+SELECT D.DEPARTMENT_NAME,
+       CONCAT(E.FIRST_NAME, ' ', E.LAST_NAME) AS MANAGER_NAME,
+       L.CITY,
+       C.COUNTRY_NAME
+FROM DEPARTMENTS D
+LEFT JOIN LOCATIONS L ON D.LOCATION_ID = L.LOCATION_ID
+LEFT JOIN EMPLOYEES E ON D.DEPARTMENT_ID = E.DEPARTMENT_ID
+LEFT JOIN COUNTRIES C ON L.COUNTRY_ID = C.COUNTRY_ID
+;
+
+
+-- Xi. (query to display the average salary of each department)
+select 
+D.department_name,
+AVG(E.salary)
+from 
+employees E
+LEFT JOIN Departments D ON E.department_ID = D.Department_ID
+GROUP by D.department_name
+;
+
+-- Xii. 
+CREATE TABLE JOB_GRADES(
+GRADE_LEVEL VARCHAR(2),
+LOWEST_SAL INTEGER not null,
+HIGHEST_SAL INTEGER not null,
+
+PRIMARY KEY (GRADE_LEVEL)
+)
+;
+Select * from JOb_GRADES;
+
+ALTER TABLE JOB_GRADES
+ADD FOREIGN KEY (GRADE_LEVEL) REFERENCES JOBS(GRADE_LEVEL) 
+;
+
+INSERT INTO JOB_GRADES (GRADE_LEVEL, LOWEST_SAL, HIGHEST_SAL)
+VALUES
+('A', 28000, 40000),
+('B', 22000, 30000),
+('C', 18000, 25000),
+('D', 12000, 20000),
+('E', 8000, 15000),
+('F', 5000, 10000)
+;
+
+
+
