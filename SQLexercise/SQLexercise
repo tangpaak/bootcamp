@@ -1,0 +1,120 @@
+CREATE DATABASE ORG;
+SHOW DATABASES;
+USE ORG;
+
+show tables;
+
+select * from worker;
+select * from BONUS;
+
+
+CREATE TABLE WORKER (
+  WORKER_ID INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  FIRST_NAME CHAR(25),
+  LAST_NAME CHAR(25),
+  SALARY NUMERIC(15),
+  JOINING_DATE DATETIME,
+  DEPARTMENT CHAR(25)
+);
+
+-- inesrt data to worker
+INSERT INTO WORKER 
+  (FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT) VALUES
+    ('Monika', 'Arora', 100000, '21-02-20 09:00:00', 'HR'),
+    ('Niharika', 'Verma', 80000, '21-06-11 09:00:00', 'Admin'),
+    ('Vishal', 'Singhal', 300000, '21-02-20 09:00:00', 'HR'),
+    ('Mohan', 'Sarah', 300000, '12-03-19 09:00:00', 'Admin'),
+    ('Amitabh', 'Singh', 500000, '21-02-20 09:00:00', 'Admin'),
+    ('Vivek', 'Bhati', 490000, '21-06-11 09:00:00', 'Admin'),
+    ('Vipul', 'Diwan', 200000, '21-06-11 09:00:00', 'Account'),
+    ('Satish', 'Kumar', 75000, '21-01-20 09:00:00', 'Account'),
+    ('Geetika', 'Chauhan', 90000, '21-04-11 09:00:00', 'Admin');
+
+-- create table bonus
+CREATE TABLE BONUS (
+  WORKER_REF_ID INTEGER,
+  BONUS_AMOUNT NUMERIC(10),
+  BONUS_DATE DATETIME,
+  FOREIGN KEY (WORKER_REF_ID) REFERENCES Worker(WORKER_ID)
+);
+
+-- 1. insert data
+select * from WORKER;
+select * from BONUS;
+
+insert into BONUS(Worker_REF_ID, BONUS_AMOUNT, BONUS_DATE) 
+values ('6', 32000, '2021-11-02');
+
+insert into BONUS(Worker_REF_ID, BONUS_AMOUNT, BONUS_DATE) 
+values ('6', 20000, '2022-11-02');
+
+insert into BONUS(Worker_REF_ID, BONUS_AMOUNT, BONUS_DATE) 
+values ('5', 21000, '2021-11-02');
+
+insert into BONUS(Worker_REF_ID, BONUS_AMOUNT, BONUS_DATE) 
+values ('9', 30000, '2021-11-02');
+
+insert into BONUS(Worker_REF_ID, BONUS_AMOUNT, BONUS_DATE) 
+values ('8', 4500, '2022-11-02');
+
+-- Task 2:
+select * 
+from worker
+order by salary desc
+limit 1 offset 1
+;
+
+-- Task 3:
+select * from worker;
+
+SELECT
+  WORKER_ID,
+  FIRST_NAME,
+  LAST_NAME,
+  SALARY,
+  JOINING_DATE,
+  DEPARTMENT
+FROM worker
+WHERE (DEPARTMENT, SALARY) IN (
+  SELECT DEPARTMENT, MAX(SALARY)
+  FROM worker
+  GROUP BY DEPARTMENT
+);
+
+-- Task 4:
+select * from worker;
+
+SELECT
+  w1.WORKER_ID,
+  w1.FIRST_NAME,
+  w1.LAST_NAME,
+  w1.SALARY,
+  w1.JOINING_DATE,
+  w1.DEPARTMENT,
+  
+  w2.WORKER_ID,
+  w2.FIRST_NAME,
+  w2.LAST_NAME,
+  w2.SALARY,
+  w2.JOINING_DATE,
+  w2.DEPARTMENT
+FROM worker w1 
+join worker w2
+ON W1.SALARY = W2.SALARY
+AND W1.WORKER_ID < W2.WORKER_ID
+;
+
+-- Task 5:
+select * from worker;
+select * from bonus;
+
+Select 
+DATE_FORMAT(B.BONUS_DATE, '%Y')AS BONUSDATE,
+W.FIRST_NAME,
+W.LAST_NAME,
+W.SALARY
+from worker AS W 
+LEFT JOIN BONUS AS B 
+ON (WORKER_REF_ID) = (WORKER_ID)
+WHERE B.BONUS_DATE IS NOT NULL;
+;

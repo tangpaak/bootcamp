@@ -1,4 +1,29 @@
 -------------------------------------------------------------------------------
 Test set: com.hkjava.bootcamp.AppTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s -- in com.hkjava.bootcamp.AppTest
+Tests run: 9, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.203 s <<< FAILURE! -- in com.hkjava.bootcamp.AppTest
+com.hkjava.bootcamp.AppTest.testAssertNotTimeout -- Time elapsed: 0.164 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: execution exceeded timeout of 100 ms by 55 ms
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTimeout.assertTimeout(AssertTimeout.java:81)
+	at org.junit.jupiter.api.AssertTimeout.assertTimeout(AssertTimeout.java:57)
+	at org.junit.jupiter.api.AssertTimeout.assertTimeout(AssertTimeout.java:39)
+	at org.junit.jupiter.api.AssertTimeout.assertTimeout(AssertTimeout.java:35)
+	at org.junit.jupiter.api.Assertions.assertTimeout(Assertions.java:3290)
+	at com.hkjava.bootcamp.AppTest.testAssertNotTimeout(AppTest.java:86)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.hkjava.bootcamp.AppTest.testAssertThrows -- Time elapsed: 0.004 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.ArithmeticException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3111)
+	at com.hkjava.bootcamp.AppTest.testAssertThrows(AppTest.java:75)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

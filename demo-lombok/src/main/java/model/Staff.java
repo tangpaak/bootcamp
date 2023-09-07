@@ -4,11 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 @EqualsAndHashCode
 @SuperBuilder 
 @Builder
+@ToString (callSuper = true)
+
 // @AllArgsConstructor
 
 public class Staff extends Human { //<--since Human don't have empty constructor
@@ -20,10 +23,10 @@ public Staff(String name, double salary){
   this.salary = salary;
 }
 
-@Override
-public String toString(){
-  return "[name = " + this.name + ", salary = " + this.salary +  "]";
-}
+// @Override
+// public void ToString(){
+//   return super(name) + this.salary;
+// }
 
 
 public static void main(String[] args) {
